@@ -1,6 +1,8 @@
 import 'dart:io';
 import 'dart:math' show pi;
 
+import 'package:zongovation/views/menu_provider.dart';
+
 import './home_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
@@ -98,22 +100,42 @@ class PageStructure extends StatelessWidget {
         break;
       case 1:
         return Center(
-          child: Text('Page with index $index'),
+          child: Text('Page with index $index',
+              style: TextStyle(
+                  fontSize: 15.0,
+                  decoration: TextDecoration.none,
+                  color: Colors.red,
+                  fontWeight: FontWeight.bold)),
         );
         break;
       case 2:
         return Center(
-          child: Text('Page with index $index'),
+          child: Text('Page with index $index',
+              style: TextStyle(
+                  fontSize: 15.0,
+                  decoration: TextDecoration.none,
+                  color: Colors.red,
+                  fontWeight: FontWeight.bold)),
         );
         break;
       case 3:
         return Center(
-          child: Text('Page with index $index'),
+          child: Text('Page with index $index',
+              style: TextStyle(
+                  fontSize: 15.0,
+                  decoration: TextDecoration.none,
+                  color: Colors.red,
+                  fontWeight: FontWeight.bold)),
         );
         break;
       case 4:
         return Center(
-          child: Text('Page with index $index'),
+          child: Text('Page with index $index',
+              style: TextStyle(
+                  fontSize: 15.0,
+                  decoration: TextDecoration.none,
+                  color: Colors.red,
+                  fontWeight: FontWeight.bold)),
         );
         break;
 

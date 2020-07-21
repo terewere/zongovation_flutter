@@ -1,3 +1,5 @@
+import 'package:zongovation/views/menu_provider.dart';
+
 import './menu_page.dart';
 import './page_structure.dart';
 import 'package:flutter/animation.dart';
@@ -7,6 +9,7 @@ import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:provider/provider.dart';
 
 import 'c.dart';
+import 'model/menu_item.dart';
 
 class HomeScreen extends StatefulWidget {
   static List<MenuItem> mainMenu = [
@@ -70,18 +73,5 @@ class MainScreen extends StatelessWidget {
         },
       ),
     );
-  }
-}
-
-class MenuProvider extends ChangeNotifier {
-  int _currentPage = 0;
-
-  int get currentPage => _currentPage;
-
-  void updateCurrentPage(int index) {
-    if (index != currentPage) {
-      _currentPage = index;
-      notifyListeners();
-    }
   }
 }

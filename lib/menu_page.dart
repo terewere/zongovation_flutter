@@ -1,4 +1,6 @@
 import 'dart:io';
+import 'package:zongovation/views/menu_provider.dart';
+
 import './home_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
@@ -6,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'c.dart';
+import 'model/menu_item.dart';
 
 class MenuScreen extends StatefulWidget {
   final List<MenuItem> mainMenu;
@@ -174,12 +177,4 @@ class MenuItemWidget extends StatelessWidget {
       ),
     );
   }
-}
-
-class MenuItem {
-  final String title;
-  final IconData icon;
-  final int index;
-
-  const MenuItem(this.title, this.icon, this.index);
 }
