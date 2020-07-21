@@ -10,7 +10,7 @@ import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:provider/provider.dart';
 
 import 'c.dart';
-import 'home_view.dart';
+import 'views/home_view.dart';
 
 class PageStructure extends StatelessWidget {
   final String title;

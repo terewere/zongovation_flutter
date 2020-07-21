@@ -1,5 +1,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../home_view_model.dart';
 
 final List<String> imgList = ['images/1.jpg', 'images/2.jpg', 'images/3.jpg'];
 
@@ -45,7 +48,7 @@ final List<Widget> imageSliders = imgList
         ))
     .toList();
 
-class HomeView extends StatelessWidget {
+class Carousel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(children: [
@@ -55,7 +58,10 @@ class HomeView extends StatelessWidget {
             autoPlay: true,
             enlargeCenterPage: true,
             aspectRatio: 2.0,
-            onPageChanged: (index, reason) {}),
+            onPageChanged: (index, reason) {
+              Provider.of<HomeViewModel>(context, listen: false)
+                  .updateCurrentIndex(index);
+            }),
       ),
       Row(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -67,7 +73,7 @@ class HomeView extends StatelessWidget {
             margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: 0 == index
+              color: Provider.of<HomeViewModel>(context).currentIndex == index
                   ? Color.fromRGBO(0, 0, 0, 0.9)
                   : Color.fromRGBO(0, 0, 0, 0.4),
             ),
