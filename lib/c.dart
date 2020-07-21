@@ -1,0 +1,11 @@
+const APP_NAME = "Zongovation Hub";
+const HOME = "Home";
+const ABOUT_US = "About Us";
+const PROGRAMS = "Programs";
+const HELP = "Help";
+const COMMUNITY = "Community";
+const PARTNERS = "Partners";
+const PAGE = "Page";
+const CURRENT_PAGE = "Current Page";
+const TITLE = "Zongovation";
+const LOG_OUT = "Logout";

@@ -1,11 +1,11 @@
 import 'dart:io';
-
-import 'package:easy_localization/easy_localization.dart';
 import './home_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import 'c.dart';
 
 class MenuScreen extends StatefulWidget {
   final List<MenuItem> mainMenu;
@@ -73,7 +73,7 @@ class _MenuScreenState extends State<MenuScreen> {
                 padding: const EdgeInsets.only(
                     bottom: 36.0, left: 24.0, right: 24.0),
                 child: Text(
-                  tr("name"),
+                  TITLE,
                   style: TextStyle(
                     fontSize: 22,
                     color: Colors.white,
@@ -107,7 +107,7 @@ class _MenuScreenState extends State<MenuScreen> {
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
-                      tr("logout"),
+                      LOG_OUT,
                       style: TextStyle(fontSize: 18),
                     ),
                   ),

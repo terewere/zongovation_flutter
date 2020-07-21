@@ -1,7 +1,6 @@
 import 'dart:io';
 import 'dart:math' show pi;
 
-import 'package:zongovation/home_view.dart';
 import './home_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
@@ -9,6 +8,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:provider/provider.dart';
+
+import 'c.dart';
+import 'home_view.dart';
 
 class PageStructure extends StatelessWidget {
   final String title;
@@ -32,7 +34,11 @@ class PageStructure extends StatelessWidget {
     final _currentPage =
         context.select<MenuProvider, int>((provider) => provider.currentPage);
     final container = Container(
-        color: Colors.grey[300], child: Center(child: getPage(_currentPage)));
+      color: Colors.grey[300],
+      child: Center(
+        child: getPage(_currentPage),
+      ),
+    );
     final color = Theme.of(context).accentColor;
     final style = TextStyle(color: color);
 
@@ -41,9 +47,7 @@ class PageStructure extends StatelessWidget {
       appBar: PlatformAppBar(
         automaticallyImplyLeading: false,
         android: (_) => MaterialAppBarData(elevation: elevation),
-        title: PlatformText(
-          HomeScreen.mainMenu[_currentPage].title,
-        ),
+        title: Text(APP_NAME),
         leading: Transform.rotate(
           angle: angle,
           child: PlatformIconButton(

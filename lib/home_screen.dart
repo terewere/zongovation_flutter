@@ -1,4 +1,3 @@
-import 'package:easy_localization/easy_localization.dart';
 import './menu_page.dart';
 import './page_structure.dart';
 import 'package:flutter/animation.dart';
@@ -7,13 +6,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:provider/provider.dart';
 
+import 'c.dart';
+
 class HomeScreen extends StatefulWidget {
   static List<MenuItem> mainMenu = [
-    MenuItem(tr("home"), Icons.home, 0),
-    MenuItem(tr("about_us"), Icons.info_outline, 1),
-    MenuItem(tr("programs"), Icons.format_list_bulleted, 2),
-    MenuItem(tr("community"), Icons.people_outline, 3),
-    MenuItem(tr("partners"), Icons.compare_arrows, 4),
+    MenuItem(HOME, Icons.home, 0),
+    MenuItem(ABOUT_US, Icons.info_outline, 1),
+    MenuItem(PROGRAMS, Icons.format_list_bulleted, 2),
+    MenuItem(COMMUNITY, Icons.people_outline, 3),
+    MenuItem(PARTNERS, Icons.compare_arrows, 4),
   ];
 
   @override
@@ -23,8 +24,6 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final _drawerController = ZoomDrawerController();
 
-  int _currentPage = 0;
-
   @override
   Widget build(BuildContext context) {
     return ZoomDrawer(
@@ -32,7 +31,6 @@ class _HomeScreenState extends State<HomeScreen> {
       menuScreen: MenuScreen(
         HomeScreen.mainMenu,
         callback: _updatePage,
-        current: _currentPage,
       ),
       mainScreen: MainScreen(),
       borderRadius: 24.0,
@@ -51,12 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 }
 
-class MainScreen extends StatefulWidget {
-  @override
-  _MainScreenState createState() => _MainScreenState();
-}
-
-class _MainScreenState extends State<MainScreen> {
+class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final rtl = ZoomDrawer.isRTL();
