@@ -18,6 +18,9 @@ dependencies:
   # inversion of control
   get_it:
   injectable:
+  flutter_localizations:
+    sdk: flutter
+  easy_localization: ^2.3.2
 
 dev_dependencies:
   build_runner:
