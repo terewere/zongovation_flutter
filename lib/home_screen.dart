@@ -3,7 +3,6 @@ import 'package:zongovation/views/menu_provider.dart';
 import './menu_page.dart';
 import './page_structure.dart';
 import 'package:flutter/animation.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:provider/provider.dart';
@@ -17,7 +16,8 @@ class HomeScreen extends StatefulWidget {
     MenuItem(ABOUT_US, Icons.info_outline, 1),
     MenuItem(PROGRAMS, Icons.format_list_bulleted, 2),
     MenuItem(COMMUNITY, Icons.people_outline, 3),
-    MenuItem(PARTNERS, Icons.compare_arrows, 4),
+    MenuItem(PARTNERS, Icons.group, 4),
+    MenuItem(BLOG, Icons.language, 5),
   ];
 
   @override

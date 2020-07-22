@@ -2,7 +2,8 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_wordpress/flutter_wordpress.dart' as wp;
-import 'package:flutter_html/flutter_html.dart';
+import 'package:html/parser.dart';
+import 'package:jiffy/jiffy.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'details_page.dart';
@@ -14,18 +15,18 @@ class LandingPage extends StatelessWidget {
   LandingPage() {
     if (Platform.isAndroid) {
       // Android-specific code
-//      baseUrl = 'http://10.0.2.2:8080';
+      baseUrl = 'http://10.0.2.2:8080';
     } else if (Platform.isIOS) {
       // iOS-specific code
 
-//      baseUrl = 'http://localhost:8080';
+      baseUrl = 'http://localhost:8080';
     } else {
-//      baseUrl = 'http://localhost:8080';
+      baseUrl = 'http://localhost:8080';
     }
 
     wordPress = wp.WordPress(
-      baseUrl: 'https://demo.wp-api.org',
-//      baseUrl: baseUrl,
+//      baseUrl: 'https://demo.wp-api.org',
+      baseUrl: baseUrl,
     );
   }
 
@@ -47,16 +48,13 @@ class LandingPage extends StatelessWidget {
     if (post.featuredMedia == null) {
       return SizedBox();
     }
-    return Image.network(post.featuredMedia.sourceUrl);
+    return FadeInImage.assetNetwork(
+        placeholder: 'images/spinner.gif', image: post.featuredMedia.sourceUrl);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('WordPress Demo API'),
-        centerTitle: true,
-      ),
       body: Container(
         child: FutureBuilder(
           future: _fetchPosts(),
@@ -82,15 +80,17 @@ class LandingPage extends StatelessWidget {
                             builder: (context) => DetailsPage(post)));
                   },
                   child: Padding(
-                    padding: const EdgeInsets.all(5.0),
+                    padding: const EdgeInsets.all(10.0),
                     child: Card(
                       child: Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: const EdgeInsets.all(20.0),
                         child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             _getPostImage(post),
                             SizedBox(
-                              height: 10,
+                              height: 12,
                             ),
                             Text(
                               post.title.rendered.toString(),
@@ -98,19 +98,32 @@ class LandingPage extends StatelessWidget {
                                   fontWeight: FontWeight.bold, fontSize: 20),
                             ),
                             SizedBox(
-                              height: 15,
+                              height: 5,
                             ),
-                            Html(
-                              data: post.excerpt.rendered.toString(),
-                              onLinkTap: (String link) {
-                                _launchUrl(link);
-                              },
+                            Text(
+                              parse(post.excerpt.rendered).documentElement.text,
+                              style: TextStyle(wordSpacing: 3, fontSize: 18),
+                              maxLines: 3,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                            SizedBox(
+                              height: 10,
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: <Widget>[
-                                Text(post.date.toString().replaceAll('T', ' ')),
-                                Text(post.author.name),
+                                Text(Jiffy(post.date).fromNow(),
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      color: Colors.grey,
+                                    )),
+                                Text(
+                                  post.author.name,
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    color: Colors.grey,
+                                  ),
+                                ),
                               ],
                             )
                           ],

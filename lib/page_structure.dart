@@ -1,10 +1,10 @@
 import 'dart:io';
 import 'dart:math' show pi;
 
+import 'package:zongovation/views/landing_page.dart';
 import 'package:zongovation/views/menu_provider.dart';
 
 import './home_screen.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
@@ -48,6 +48,7 @@ class PageStructure extends StatelessWidget {
       backgroundColor: Colors.transparent,
       appBar: PlatformAppBar(
         automaticallyImplyLeading: false,
+        ios: (_) => CupertinoNavigationBarData(transitionBetweenRoutes: false),
         android: (_) => MaterialAppBarData(elevation: elevation),
         title: Text(APP_NAME),
         leading: Transform.rotate(
@@ -99,14 +100,7 @@ class PageStructure extends StatelessWidget {
         return HomeView();
         break;
       case 1:
-        return Center(
-          child: Text('Page with index $index',
-              style: TextStyle(
-                  fontSize: 15.0,
-                  decoration: TextDecoration.none,
-                  color: Colors.red,
-                  fontWeight: FontWeight.bold)),
-        );
+        return LandingPage();
         break;
       case 2:
         return Center(
@@ -137,6 +131,11 @@ class PageStructure extends StatelessWidget {
                   color: Colors.red,
                   fontWeight: FontWeight.bold)),
         );
+        break;
+
+      case 5:
+        return LandingPage();
+
         break;
 
       default:

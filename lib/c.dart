@@ -5,6 +5,7 @@ const PROGRAMS = "Programs";
 const HELP = "Help";
 const COMMUNITY = "Community";
 const PARTNERS = "Partners";
+const BLOG = "Blog";
 const PAGE = "Page";
 const CURRENT_PAGE = "Current Page";
 const TITLE = "Zongovation";
