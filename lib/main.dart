@@ -1,4 +1,5 @@
 import 'package:zongovation/app/locator.dart';
+import 'package:zongovation/views/landing_page.dart';
 import 'package:zongovation/views/menu_provider.dart';
 
 import './home_screen.dart';
@@ -23,10 +24,12 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         accentColor: Colors.red,
       ),
-      home: ChangeNotifierProvider(
-        create: (_) => MenuProvider(),
-        child: HomeScreen(),
-      ),
+      home: LandingPage(),
+
+//      home: ChangeNotifierProvider(
+//        create: (_) => MenuProvider(),
+//        child: HomeScreen(),
+//      ),
     );
   }
 }
