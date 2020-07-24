@@ -20,6 +20,8 @@ class MyApp extends StatelessWidget {
       onGenerateTitle: (context) => APP_NAME,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        primaryColor: Colors.indigo,
+        accentColor: Colors.red,
         primarySwatch: Colors.red,
         appBarTheme: AppBarTheme(
           elevation: 0,

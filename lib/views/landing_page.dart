@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_wordpress/flutter_wordpress.dart' as wp;
 import 'package:html/parser.dart';
 import 'package:jiffy/jiffy.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import 'details_page.dart';
 
@@ -138,13 +137,5 @@ class LandingPage extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  _launchUrl(String link) async {
-    if (await canLaunch(link)) {
-      await launch(link);
-    } else {
-      throw 'Cannot launch $link';
-    }
   }
 }

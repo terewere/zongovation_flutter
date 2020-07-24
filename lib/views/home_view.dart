@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:zongovation/views/widget/carousel.dart';
+import 'package:zongovation/views/widget/servicies_activities.dart';
 
 import 'home_view_model.dart';
 
@@ -18,10 +19,26 @@ class _HomeViewState extends State<HomeView> {
       create: (context) => HomeViewModel(),
       child: Consumer<HomeViewModel>(
         builder: (context, model, child) => Scaffold(
+          backgroundColor: Colors.grey[200],
 //      appBar: AppBar(title: Text('Carousel with indicator demo')),
-          body: Column(children: [
-            Carousel(),
-          ]),
+          body: SingleChildScrollView(
+            child: Column(
+              children: [
+                Carousel(),
+                SizedBox(
+                  height: 40,
+                ),
+                Text(
+                  'Services & Activities',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                ActivityService()
+              ],
+            ),
+          ),
         ),
       ),
     );

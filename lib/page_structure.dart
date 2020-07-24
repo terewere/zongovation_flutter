@@ -38,7 +38,7 @@ class PageStructure extends StatelessWidget {
     final container = Container(
       color: Colors.grey[300],
       child: Center(
-        child: getPage(_currentPage),
+        child: getPage(_currentPage, context),
       ),
     );
     final color = Theme.of(context).accentColor;
@@ -50,7 +50,9 @@ class PageStructure extends StatelessWidget {
         automaticallyImplyLeading: false,
         ios: (_) => CupertinoNavigationBarData(transitionBetweenRoutes: false),
         android: (_) => MaterialAppBarData(elevation: elevation),
-        title: Text(APP_NAME),
+        title: Text(
+          '$TITLE | ${HomeScreen.mainMenu[_currentPage].title}',
+        ),
         leading: Transform.rotate(
           angle: angle,
           child: PlatformIconButton(
@@ -94,7 +96,7 @@ class PageStructure extends StatelessWidget {
     );
   }
 
-  Widget getPage(int index) {
+  Widget getPage(int index, context) {
     switch (index) {
       case 0:
         return HomeView();
@@ -108,7 +110,7 @@ class PageStructure extends StatelessWidget {
               style: TextStyle(
                   fontSize: 15.0,
                   decoration: TextDecoration.none,
-                  color: Colors.red,
+                  color: Theme.of(context).accentColor,
                   fontWeight: FontWeight.bold)),
         );
         break;
@@ -118,7 +120,7 @@ class PageStructure extends StatelessWidget {
               style: TextStyle(
                   fontSize: 15.0,
                   decoration: TextDecoration.none,
-                  color: Colors.red,
+                  color: Theme.of(context).accentColor,
                   fontWeight: FontWeight.bold)),
         );
         break;
@@ -128,7 +130,7 @@ class PageStructure extends StatelessWidget {
               style: TextStyle(
                   fontSize: 15.0,
                   decoration: TextDecoration.none,
-                  color: Colors.red,
+                  color: Theme.of(context).accentColor,
                   fontWeight: FontWeight.bold)),
         );
         break;
@@ -143,3 +145,9 @@ class PageStructure extends StatelessWidget {
     }
   }
 }
+
+//extension StringExtension on String {
+//  String capitalize() {
+//    return "${this[0].toUpperCase()}${this.substring(1)}";
+//  }
+//}

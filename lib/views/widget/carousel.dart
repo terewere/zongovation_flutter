@@ -54,35 +54,37 @@ final List<Widget> imageSliders = imgList
 class Carousel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Column(children: [
-      CarouselSlider(
-        items: imageSliders,
-        options: CarouselOptions(
-            autoPlay: true,
-            enlargeCenterPage: true,
-            aspectRatio: 2.0,
-            onPageChanged: (index, reason) {
-              Provider.of<HomeViewModel>(context, listen: false)
-                  .updateCurrentIndex(index);
-            }),
-      ),
-      Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: imgList.map((url) {
-          int index = imgList.indexOf(url);
-          return Container(
-            width: 8.0,
-            height: 8.0,
-            margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: Provider.of<HomeViewModel>(context).currentIndex == index
-                  ? Color.fromRGBO(0, 0, 0, 0.9)
-                  : Color.fromRGBO(0, 0, 0, 0.4),
-            ),
-          );
-        }).toList(),
-      ),
-    ]);
+    return Card(
+      child: Column(children: [
+        CarouselSlider(
+          items: imageSliders,
+          options: CarouselOptions(
+              autoPlay: true,
+              enlargeCenterPage: true,
+              aspectRatio: 2.0,
+              onPageChanged: (index, reason) {
+                Provider.of<HomeViewModel>(context, listen: false)
+                    .updateCurrentIndex(index);
+              }),
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: imgList.map((url) {
+            int index = imgList.indexOf(url);
+            return Container(
+              width: 8.0,
+              height: 8.0,
+              margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: Provider.of<HomeViewModel>(context).currentIndex == index
+                    ? Color.fromRGBO(0, 0, 0, 0.9)
+                    : Color.fromRGBO(0, 0, 0, 0.4),
+              ),
+            );
+          }).toList(),
+        ),
+      ]),
+    );
   }
 }
